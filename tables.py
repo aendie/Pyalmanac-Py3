@@ -256,9 +256,9 @@ def starstab(date):
         m = m + u'\\hline \n'
     out = out + m
 
-    # returns a table with Horizontal paralax for Venus and Mars
+    # returns a table with Horizontal parallax for Venus and Mars
     hp = u'\\hline \n'
-    hp = hp + u'\multicolumn{2}{|r}{\\rule{0pt}{2.4ex}\\textbf{Horizontal paralax}} & \multicolumn{1}{c|}{}\\\ \n'
+    hp = hp + u'\multicolumn{2}{|r}{\\rule{0pt}{2.4ex}\\textbf{Horizontal parallax}} & \multicolumn{1}{c|}{}\\\ \n'
     hp = hp + u'\multicolumn{2}{|r}{Venus:} & \multicolumn{1}{c|}{%s} \\\ \n' %(p[9])
     hp = hp + u'\multicolumn{2}{|r}{Mars:} & \multicolumn{1}{c|}{%s} \\\ \n' %(p[8])
     hp = hp + u'\\hline \n'
