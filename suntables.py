@@ -22,7 +22,7 @@ import config
 from alma_ephem import *
 
 
-def sunmoontab(date):
+def suntab(date):
     # generates LaTeX table for sun and moon (traditional)
     tab = r'''\noindent
     \begin{tabular*}{0.2\textwidth}[t]{@{\extracolsep{\fill}}|c|rr|}
@@ -89,7 +89,7 @@ def sunmoontab(date):
     return tab
     
     
-def sunmoontabm(date):
+def suntabm(date):
     # generates LaTeX table for sun and moon (modern)
     tab = r'''\noindent
     \renewcommand{\arraystretch}{1.1}
@@ -208,25 +208,25 @@ def page(date):
     \begin{scriptsize}
     """ %(ephem.date(date).datetime().strftime("%Y %B %d"),ephem.date(date+14).datetime().strftime("%b. %d"))
     if config.tbls == "m":
-        page = page + sunmoontabm(date)
+        page = page + suntabm(date)
         page = page + r'''\quad
 '''
-        page = page + sunmoontabm(date+3)
+        page = page + suntabm(date+3)
         page = page + r'''\quad
 '''
-        page = page + sunmoontabm(date+6)
+        page = page + suntabm(date+6)
         page = page + r'''\quad
 '''
-        page = page + sunmoontabm(date+9)
+        page = page + suntabm(date+9)
         page = page + r'''\quad
 '''
-        page = page + sunmoontabm(date+12)
+        page = page + suntabm(date+12)
     else:
-        page = page + sunmoontab(date)
-        page = page + sunmoontab(date+3)
-        page = page + sunmoontab(date+6)
-        page = page + sunmoontab(date+9)
-        page = page + sunmoontab(date+12)
+        page = page + suntab(date)
+        page = page + suntab(date+3)
+        page = page + suntab(date+6)
+        page = page + suntab(date+9)
+        page = page + suntab(date+12)
     page = page + r"""\end{scriptsize}
     \newpage
 """
