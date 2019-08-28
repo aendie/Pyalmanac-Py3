@@ -25,7 +25,7 @@ def degmin(deg):
     #changes decimal degrees to the format usually used in the nautical almanac. (ddd°mm.m')
     theminus = ""
     if deg < 0:
-        theminus = "-"
+        theminus = u'-'
     deg = abs(deg)
     di = int(deg)		# degrees (integer)
     # note: round() uses "Rounding Half To Even" strategy
@@ -36,7 +36,7 @@ def degmin(deg):
         di += 1
         if di == 360:
             di = 0
-    gm = "%s%s°%04.1f" %(theminus,di,mf)
+    gm = u'%s%s°%04.1f' %(theminus,di,mf)
     return gm
 
 def decdeg(d,min):
@@ -95,7 +95,7 @@ def inctab(min):
    
     sec = 0
     while sec < 60:
-        line = "%s & %s & %s & %s & %s - %s & %s - %s & %s - %s \\\ \n" %(sec,suninc(min,sec),ariesinc(min,sec),mooninc(min,sec),str(round(0.1*sec,1)),vcorr(min,0.1*sec),str(round(6+0.1*sec,1)),vcorr(min,6+0.1*sec),str(round(12+0.1*sec,1)),vcorr(min,12+0.1*sec))
+        line = u"%s & %s & %s & %s & %s - %s & %s - %s & %s - %s \\\ \n" %(sec,suninc(min,sec),ariesinc(min,sec),mooninc(min,sec),str(round(0.1*sec,1)),vcorr(min,0.1*sec),str(round(6+0.1*sec,1)),vcorr(min,6+0.1*sec),str(round(12+0.1*sec,1)),vcorr(min,12+0.1*sec))
         tab = tab + line
         sec += 1
         
@@ -126,7 +126,7 @@ def diptab():
 	\hline
 	'''
 	while meter < 25.5:
-		line = "%s &  %.1f & %.1f\\\ \n" %(meter, dip(meter), meter/0.3084)
+		line = u"%s &  %.1f & %.1f\\\ \n" %(meter, dip(meter), meter/0.3084)
 		tab = tab + line
 		meter += 0.5
 	tab = tab + r"""\hline
@@ -149,15 +149,15 @@ def refractab():
 	\hline
 	'''
 	while ho < 20:
-		line = "%s° &  %.1f\\\ \n" %(ho, refrac(ho))
+		line = u"%s° &  %.1f\\\ \n" %(ho, refrac(ho))
 		tab = tab + line
 		ho += 0.5
 	while ho < 40:
-		line = "%s° &  %.1f\\\ \n" %(ho, refrac(ho))
+		line = u"%s° &  %.1f\\\ \n" %(ho, refrac(ho))
 		tab = tab + line
 		ho += 1
 	while ho < 90:
-		line = "%s° &  %.1f\\\ \n" %(ho, refrac(ho))
+		line = u"%s° &  %.1f\\\ \n" %(ho, refrac(ho))
 		tab = tab + line
 		ho += 5
 	tab = tab + r"""\hline
@@ -182,27 +182,27 @@ def parallaxtab():
 	d = 0
 	line = "\\textbf{$H_{a}$} "
 	while d<90:
-		line += "& \multicolumn{1}{>{\hspace{-4pt}}c<{\hspace{-4pt}}|}{\\textbf{%s-%s°}}" %(d, d+5)
+		line += u"& \multicolumn{1}{>{\hspace{-4pt}}c<{\hspace{-4pt}}|}{\\textbf{%s-%s°}}" %(d, d+5)
 		d+= 5
-	line += " \\\ \n \\hline"
+	line += u" \\\ \n \\hline"
 	tab += line
 	
 	while Hdeg < 5 :
 		line = " ´ "
 		dd = Hdeg
 		while dd < 90:
-			line += "& \multicolumn{1}{l}{\\textbf{%s°}}" %(dd)
+			line += u"& \multicolumn{1}{l}{\\textbf{%s°}}" %(dd)
 			dd += 5
-		line += "\\vline \\\ \n"
+		line += u"\\vline \\\ \n"
 		tab = tab + line
 		Hmin=0
 		while Hmin < 60:
 			dd = Hdeg
-			line = "\\textbf{%s} " %(Hmin)
+			line = u"\\textbf{%s} " %(Hmin)
 			while dd < 90:
-				line += " & %.1f " %(parallax(HP,dd,Hmin))
+				line += u" & %.1f " %(parallax(HP,dd,Hmin))
 				dd += 5
-			line += "\\\ \n"
+			line += u"\\\ \n"
 			tab = tab + line
 			Hmin += 10	
 		Hdeg += 1
@@ -213,12 +213,12 @@ def parallaxtab():
 	"""
 	hp = 54.3
 	while hp<61.5:
-		line = "\\textbf{ %.1f} " %(hp)
+		line = u"\\textbf{ %.1f} " %(hp)
 		d = 2
 		while d<90:
-			line += "& %.1f " %(parallax(hp, d, 30) - parallax(54, d, 30))
+			line += u"& %.1f " %(parallax(hp, d, 30) - parallax(54, d, 30))
 			d += 5
-		line += "\\\ \n"
+		line += u"\\\ \n"
 		tab += line
 		hp += 0.3
 			
@@ -241,18 +241,18 @@ def venparallax():
 	"""
 	while Hdeg<90:
 		hp = 0.1
-		line = "\\textbf{ %s°} " %(Hdeg)
+		line = u"\\textbf{ %s°} " %(Hdeg)
 		while hp < 0.7:
-			line += "& %.1f " %(parallax(hp, Hdeg, 0))
+			line += u"& %.1f " %(parallax(hp, Hdeg, 0))
 			hp += 0.1
-		line += "\\\ \n"
+		line += u"\\\ \n"
 		tab += line
 		Hdeg += 10		
 	tab = tab + r"""\hline
 	\end{tabular}
 	"""
 	return tab
-	
+
 def makelatex():
 	lx = r"""\documentclass[ 10pt, twoside, a4paper]{scrreprt}
 	\usepackage[automark]{scrpage2}
