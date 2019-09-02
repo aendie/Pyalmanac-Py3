@@ -32,7 +32,7 @@ def init():
     global errors
     errors = 0
     global logfile
-    logfile = open('debug.log', 'w')
+    logfile = open('debug.log', mode="w", encoding="utf8")
     global logfileopen
     logfileopen = True
 
