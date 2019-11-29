@@ -18,7 +18,7 @@
 # 
 #     You should have received a copy of the GNU General Public License along
 #     with this program; if not, write to the Free Software Foundation, Inc.,
-#     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. 
+#     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 import ephem
 import math
@@ -39,7 +39,7 @@ def time(date):
         if hr == 24:
             hr = 0
 #            nextday = True	# time rounded up into next day
-    time = '%02d:%02d' %(hr,min)
+    time = u'%02d:%02d' %(hr,min)
 #    return time, nextday
     # NOTE: this function could easily return the information that rounding
     #       flipped into the next day, however this is not required here.
@@ -230,7 +230,7 @@ def sunmoon(date):
     
     #calculate the moons horizontal paralax
     deg = ephem.degrees(m.radius/0.272805950305)
-    hp = "%0.1f'" %((deg*360*30)/ephem.pi)
+    hp = u"%0.1f'" %(deg*360*30/ephem.pi)
     
     #calculate v and d by advancing the time with one hour.
     m.compute(date-0.5*ephem.hour,epoch=date-0.5*ephem.hour)
@@ -241,9 +241,9 @@ def sunmoon(date):
     obs.date = date+0.5*ephem.hour
     rghap = ephem.degrees(obs.sidereal_time()-m.g_ra).norm
     deg = ephem.degrees(ephem.degrees(rghap-rgha).norm-ephem.degrees('14:19:00'))
-    vm = "%0.1f'" %((deg*360*30)/ephem.pi)
+    vm = u"%0.1f'" %(deg*360*30/ephem.pi)
     deg = ephem.degrees(m.g_dec-rdec)
-    dm = "%0.1f'" %((deg*360*30)/ephem.pi)
+    dm = u"%0.1f'" %(deg*360*30/ephem.pi)
     
     # degs, degm have been added for the sunmooontab function
     return ghas,decs,gham,vm,decm,dm,hp,degs,degm
@@ -270,12 +270,12 @@ def vdmean(date):
     s.compute(date+ephem.hour)
     obs.date = date+ephem.hour
     deg = ephem.degrees(s.g_dec-dec)
-    ds = "%0.1f" %((deg*360*30)/ephem.pi)
-    sds = "%0.1f" %((s.radius*360*30)/ephem.pi)
+    ds = u"%0.1f" %(deg*360*30/ephem.pi)
+    sds = u"%0.1f" %(s.radius*360*30/ephem.pi)
     
     #Moon
     m.compute(date)
-    sdm = "%0.1f" %((m.radius*360*30)/ephem.pi)
+    sdm = u"%0.1f" %(m.radius*360*30/ephem.pi)
     
     #Venus
     obs.date = date
@@ -286,10 +286,10 @@ def vdmean(date):
     obs.date = date+ephem.hour
     ghap = ephem.degrees(obs.sidereal_time()-v.g_ra).norm
     deg = ephem.degrees(ghap-gha).norm-ephem.degrees('15:00:00')
-    vv = "%0.1f" %((deg*360*30)/ephem.pi)
+    vv = u"%0.1f" %(deg*360*30/ephem.pi)
     deg = ephem.degrees(v.g_dec-dec)
-    dv = "%0.1f" %((deg*360*30)/ephem.pi)
-    mv = "%0.1f" %(v.mag)
+    dv = u"%0.1f" %(deg*360*30/ephem.pi)
+    mv = u"%0.1f" %(v.mag)
     
     #Mars
     obs.date = date
@@ -300,10 +300,10 @@ def vdmean(date):
     obs.date = date+ephem.hour
     ghap = ephem.degrees(obs.sidereal_time()-mars.g_ra).norm
     deg = ephem.degrees(ephem.degrees(ghap-gha).norm-ephem.degrees('15:00:00'))
-    vmars = "%0.1f" %((deg*360*30)/ephem.pi)
+    vmars = u"%0.1f" %(deg*360*30/ephem.pi)
     deg = ephem.degrees(mars.g_dec-dec)
-    dmars = "%0.1f" %((deg*360*30)/ephem.pi)
-    mmars = "%0.1f" %(mars.mag)
+    dmars = u"%0.1f" %(deg*360*30/ephem.pi)
+    mmars = u"%0.1f" %(mars.mag)
     
     #Jupiter
     obs.date = date
@@ -314,10 +314,10 @@ def vdmean(date):
     obs.date = date+ephem.hour
     ghap = ephem.degrees(obs.sidereal_time()-j.g_ra).norm
     deg = ephem.degrees(ephem.degrees(ghap-gha).norm-ephem.degrees('15:00:00'))
-    vj = "%0.1f" %((deg*360*30)/ephem.pi)
+    vj = u"%0.1f" %(deg*360*30/ephem.pi)
     deg = ephem.degrees(j.g_dec-dec)
-    dj = "%0.1f" %((deg*360*30)/ephem.pi)
-    mj = "%0.1f" %(j.mag)
+    dj = u"%0.1f" %(deg*360*30/ephem.pi)
+    mj = u"%0.1f" %(j.mag)
     
     #Saturn
     obs.date = date
@@ -328,12 +328,13 @@ def vdmean(date):
     obs.date = date+ephem.hour
     ghap = ephem.degrees(obs.sidereal_time()-sat.g_ra).norm
     deg = ephem.degrees(ephem.degrees(ghap-gha).norm-ephem.degrees('15:00:00'))
-    vsat = "%0.1f" %((deg*360*30)/ephem.pi)
+    vsat = u"%0.1f" %(deg*360*30/ephem.pi)
     deg = ephem.degrees(sat.g_dec-dec)
-    dsat = "%0.1f" %((deg*360*30)/ephem.pi)
-    msat = "%0.1f" %(sat.mag)
+    dsat = u"%0.1f" %(deg*360*30/ephem.pi)
+    msat = u"%0.1f" %(sat.mag)
     
     return ds,sds,sdm,vv,dv,mv,vmars,dmars,mmars,vj,dj,mj,vsat,dsat,msat
+
 
 def twilight(date, lat):
     # Returns for given date and latitude(in full degrees):
@@ -341,14 +342,15 @@ def twilight(date, lat):
     # NOTE: 'twilight' is only called for every third day in the Full Almanac...
     #       ...therefore daily tracking of the sun state is impossible.
 
-    latitude = ephem.degrees('%s:00:00.0' %lat)
     out = [0,0,0,0,0,0,0]
     obs = ephem.Observer()
+    latitude = ephem.degrees('%s:00:00.0' %lat)
     obs.lat = latitude
-    obs.date = date
+    d = ephem.date(date - 30 * ephem.second)    # search from 30 seconds before midnight
+    obs.date = d
     obs.pressure = 0
     s = ephem.Sun(obs)
-    s.compute(date)
+    s.compute(d)
     r = s.radius
 
     obs.horizon = ephem.degrees('-12')+r	# Nautical twilight ...
@@ -356,36 +358,37 @@ def twilight(date, lat):
         out[0] = time(obs.next_rising(s))	# begin
     except:
         out[0] = '--:--'
-    obs.date = date
+    obs.date = d
     try:
         out[6] = time(obs.next_setting(s))	# end
     except:
         out[6] = '--:--'
 #-----------------------------------------------------------
     obs.horizon = ephem.degrees('-6')+r		# Civil twilight...
-    obs.date = date
+    obs.date = d
     try:
         out[1] = time(obs.next_rising(s))	# begin
     except:
         out[1] = '--:--'
-    obs.date = date
+    obs.date = d
     try:
         out[5] = time(obs.next_setting(s))	# end
     except:
         out[5] = '--:--'
 #-----------------------------------------------------------
     obs.horizon = '-0:34'
-    obs.date = date
+    obs.date = d
     try:
         out[2] = time(obs.next_rising(s))	# sunrise
     except:
         out[2] = '--:--'
-    obs.date = date
+    obs.date = d
     try:
         out[4] = time(obs.next_setting(s))	# sunset
     except:
         out[4] = '--:--'
-    obs.date = date
+#-----------------------------------------------------------
+    obs.date = d
     out[3] = time(obs.next_transit(s))
     
     return out
@@ -394,10 +397,10 @@ def moonrise(date,lat):
     # returns moonrise and moonset for the given date and latitude plus next 2 days:
     #    rise day 1, rise day 2, rise day 3, set day 1, set day 2, set day 3
 
-    latitude = ephem.degrees('%s:00:00.0' %lat)
     out  = ['--:--','--:--','--:--','--:--','--:--','--:--']	# first event
     out2 = ['--:--','--:--','--:--','--:--','--:--','--:--']	# second event on same day (rare)
     obs = ephem.Observer()
+    latitude = ephem.degrees('%s:00:00.0' %lat)
     obs.lat = latitude
     obs.pressure = 0
     m = ephem.Moon(obs)
@@ -406,6 +409,8 @@ def moonrise(date,lat):
     d = ephem.date(date - 30 * ephem.second)
     obs.date = d
     m.compute(d)
+
+    # Moonrise/Moonset on 1st. day ...
     try:
         firstrising = obs.next_rising(m)
         if firstrising-obs.date >= 1:
@@ -447,6 +452,7 @@ def moonrise(date,lat):
     except Exception:
         flag_msg("Oops! %s occured, line: %s" %(sys.exc_info()[1],sys.exc_info()[2].tb_lineno))
 #-----------------------------------------------------------
+    # Moonrise/Moonset on 2nd. day ...
     d = ephem.date(date + 1 - 30 * ephem.second)
     obs.date = d
     m.compute(d)
@@ -491,6 +497,7 @@ def moonrise(date,lat):
     except Exception:
         flag_msg("Oops! %s occured, line: %s" %(sys.exc_info()[1],sys.exc_info()[2].tb_lineno))
 #-----------------------------------------------------------
+    # Moonrise/Moonset on 3rd. day ...
     d = ephem.date(date + 2 - 30 * ephem.second)
     obs.date = d
     m.compute(d)
