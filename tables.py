@@ -334,7 +334,7 @@ def sunmoontab(date):
             # add space between tables...
             tab = tab + r"""\multicolumn{7}{c}{}\\[-1.5ex]"""
         n += 1
-    tab = tab+r"""\end{tabular*}"""
+    tab = tab + r"""\end{tabular*}"""
     return tab
 
 
@@ -594,7 +594,7 @@ def twilighttab(date):
         lasthemisph = hemisph
         # day+1 to calculate for the second day (three days are printed on one page)
         twi = twilight(date+1,i)
-        line = "\\textbf{%s}" % hs + " " + "%s°" %(abs(i))
+        line = u"\\textbf{%s}" % hs + " " + "%s°" %(abs(i))
         line = line + " & %s & %s & %s & %s & %s & %s \\\ \n" %(twi[0],twi[1],twi[2],twi[4],twi[5],twi[6])
         tab = tab + line
         j += 1
@@ -634,9 +634,9 @@ def twilighttab(date):
     j = 5
     for i in config.lat:
         if i >= 0:
-            hemisph = "N"
+            hemisph = u'N'
         else:
-            hemisph = "S"
+            hemisph = u'S'
         if not(i in latNS):
             hs = ""
         else:
@@ -647,8 +647,8 @@ def twilighttab(date):
         lasthemisph = hemisph
         moon, moon2 = moonrise(date,i)
         if not(double_events_found(moon,moon2)):
-            tab = tab + "\\textbf{%s}" % hs + " " + "%s°" %(abs(i))
-            tab = tab + " & %s & %s & %s & %s & %s & %s \\\ \n" %(moon[0],moon[1],moon[2],moon[3],moon[4],moon[5])
+            tab = tab + u"\\textbf{%s}" % hs + " " + "%s°" %(abs(i))
+            tab = tab + u" & %s & %s & %s & %s & %s & %s \\\ \n" %(moon[0],moon[1],moon[2],moon[3],moon[4],moon[5])
         else:
 # print a row with two moonrise/moonset events on the same day & latitude
             tab = tab + r"""\multirow{2}{*}{\textbf{%s} %s°}""" %(hs,abs(i))
@@ -707,9 +707,9 @@ def twilighttab(date):
         d = ephem.date(date+k)
         eq = equation_of_time(d)
         if k == 2:
-            tab = tab + "%s & %s & %s & %s & %s & %s & %s(%s\\%%) \\\[0.3ex] \n" %(d.datetime().strftime("%d"),eq[0],eq[1],eq[2],eq[3],eq[4],eq[5],eq[6])
+            tab = tab + u"%s & %s & %s & %s & %s & %s & %s(%s\\%%) \\\[0.3ex] \n" %(d.datetime().strftime("%d"),eq[0],eq[1],eq[2],eq[3],eq[4],eq[5],eq[6])
         else:
-            tab = tab + "%s & %s & %s & %s & %s & %s & %s(%s\\%%) \\\ \n" %(d.datetime().strftime("%d"),eq[0],eq[1],eq[2],eq[3],eq[4],eq[5],eq[6])
+            tab = tab + u"%s & %s & %s & %s & %s & %s & %s(%s\\%%) \\\ \n" %(d.datetime().strftime("%d"),eq[0],eq[1],eq[2],eq[3],eq[4],eq[5],eq[6])
     tab = tab + r"""\hline
     \end{tabular*}
 """
