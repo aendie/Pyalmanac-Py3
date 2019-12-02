@@ -65,7 +65,7 @@ This also includes some very minor changes and an improved title page for the fu
 
 &nbsp;&nbsp;&nbsp;&nbsp;Install Python 3.8 (add python.exe to path)  
 &nbsp;&nbsp;&nbsp;&nbsp;Install MiKTeX 2.9 from https://miktex.org/  
-&nbsp;&nbsp;&nbsp;&nbsp;Using Command Prompt, go to your Python folder and run, e.g.:
+&nbsp;&nbsp;&nbsp;&nbsp;Run Command Prompt as Administrator, go to your Python folder and execute, e.g.:
 
 &nbsp;&nbsp;&nbsp;&nbsp;**cd C:\\Python38-32**  
 &nbsp;&nbsp;&nbsp;&nbsp;**pip install --upgrade pip**  
@@ -74,7 +74,7 @@ This also includes some very minor changes and an improved title page for the fu
 &nbsp;&nbsp;&nbsp;&nbsp;... if already installed, check for upgrade explicitly:  
 &nbsp;&nbsp;&nbsp;&nbsp;**pip install --upgrade pyephem**  
 
-&nbsp;&nbsp;&nbsp;&nbsp;Put the Pyalmanac files in a new folder, go there and start with:  
+&nbsp;&nbsp;&nbsp;&nbsp;Put the Pyalmanac files in a new folder, run Command Prompt and start with:  
 &nbsp;&nbsp;&nbsp;&nbsp;**py -3 pyalmanac.py**
 
 
