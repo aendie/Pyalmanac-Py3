@@ -318,7 +318,7 @@ def sunmoontab(date):
             while h < 24:
                 eph = sunmoon(da)
                 line = "%s & %s & %s & %s & %s & %s & %s & %s" %(h,eph[0],eph[1],eph[2],eph[3],eph[4],eph[5],eph[6])
-                lineterminator = "\\\ \n"
+                lineterminator = u"\\\ \n"
                 if h < 23 and (h+1)%6 == 0:
                     lineterminator = u'\\\[2Pt] \n'
                 tab = tab + line + lineterminator
@@ -491,7 +491,7 @@ def NSdecl(deg, hr, printNS, printDEG, modernFMT):
         hemisph = u'S'
         deg = deg[1:]
     else:
-        hemisph = "N"
+        hemisph = u'N'
     if not(printDEG):
         deg = deg[3:]	# skip the degrees (always dd°mm.m)
         if (hr+3)%6 == 0:
@@ -581,9 +581,9 @@ def twilighttab(date):
     j = 5
     for i in config.lat:
         if i >= 0:
-            hemisph = "N"
+            hemisph = u'N'
         else:
-            hemisph = "S"
+            hemisph = u'S'
         if not(i in latNS):
             hs = ""
         else:

@@ -51,7 +51,7 @@ def nadeg(rad,fixedwidth=1):
 	# the optional argument specifies the minimum width for degrees (only)
     theminus = ""
     if rad < 0:
-    	theminus = "-"
+    	theminus = '-'
     df = abs(math.degrees(rad))	# convert radians to degrees (float)
     di = int(df)			# degrees (integer)
     # note: round() uses "Rounding Half To Even" strategy
@@ -270,12 +270,12 @@ def vdmean(date):
     s.compute(date+ephem.hour)
     obs.date = date+ephem.hour
     deg = ephem.degrees(s.g_dec-dec)
-    ds = u"%0.1f" %(deg*360*30/ephem.pi)
-    sds = u"%0.1f" %(s.radius*360*30/ephem.pi)
+    ds = u'%0.1f' %(deg*360*30/ephem.pi)
+    sds = u'%0.1f' %(s.radius*360*30/ephem.pi)
     
     #Moon
     m.compute(date)
-    sdm = u"%0.1f" %(m.radius*360*30/ephem.pi)
+    sdm = u'%0.1f' %(m.radius*360*30/ephem.pi)
     
     #Venus
     obs.date = date
@@ -286,10 +286,10 @@ def vdmean(date):
     obs.date = date+ephem.hour
     ghap = ephem.degrees(obs.sidereal_time()-v.g_ra).norm
     deg = ephem.degrees(ghap-gha).norm-ephem.degrees('15:00:00')
-    vv = u"%0.1f" %(deg*360*30/ephem.pi)
+    vv = u'%0.1f' %(deg*360*30/ephem.pi)
     deg = ephem.degrees(v.g_dec-dec)
-    dv = u"%0.1f" %(deg*360*30/ephem.pi)
-    mv = u"%0.1f" %(v.mag)
+    dv = u'%0.1f' %(deg*360*30/ephem.pi)
+    mv = u'%0.1f' %(v.mag)
     
     #Mars
     obs.date = date
@@ -300,10 +300,10 @@ def vdmean(date):
     obs.date = date+ephem.hour
     ghap = ephem.degrees(obs.sidereal_time()-mars.g_ra).norm
     deg = ephem.degrees(ephem.degrees(ghap-gha).norm-ephem.degrees('15:00:00'))
-    vmars = u"%0.1f" %(deg*360*30/ephem.pi)
+    vmars = u'%0.1f' %(deg*360*30/ephem.pi)
     deg = ephem.degrees(mars.g_dec-dec)
-    dmars = u"%0.1f" %(deg*360*30/ephem.pi)
-    mmars = u"%0.1f" %(mars.mag)
+    dmars = u'%0.1f' %(deg*360*30/ephem.pi)
+    mmars = u'%0.1f' %(mars.mag)
     
     #Jupiter
     obs.date = date
@@ -314,10 +314,10 @@ def vdmean(date):
     obs.date = date+ephem.hour
     ghap = ephem.degrees(obs.sidereal_time()-j.g_ra).norm
     deg = ephem.degrees(ephem.degrees(ghap-gha).norm-ephem.degrees('15:00:00'))
-    vj = u"%0.1f" %(deg*360*30/ephem.pi)
+    vj = u'%0.1f' %(deg*360*30/ephem.pi)
     deg = ephem.degrees(j.g_dec-dec)
-    dj = u"%0.1f" %(deg*360*30/ephem.pi)
-    mj = u"%0.1f" %(j.mag)
+    dj = u'%0.1f' %(deg*360*30/ephem.pi)
+    mj = u'%0.1f' %(j.mag)
     
     #Saturn
     obs.date = date
@@ -328,10 +328,10 @@ def vdmean(date):
     obs.date = date+ephem.hour
     ghap = ephem.degrees(obs.sidereal_time()-sat.g_ra).norm
     deg = ephem.degrees(ephem.degrees(ghap-gha).norm-ephem.degrees('15:00:00'))
-    vsat = u"%0.1f" %(deg*360*30/ephem.pi)
+    vsat = u'%0.1f' %(deg*360*30/ephem.pi)
     deg = ephem.degrees(sat.g_dec-dec)
-    dsat = u"%0.1f" %(deg*360*30/ephem.pi)
-    msat = u"%0.1f" %(sat.mag)
+    dsat = u'%0.1f' %(deg*360*30/ephem.pi)
+    msat = u'%0.1f' %(sat.mag)
     
     return ds,sds,sdm,vv,dv,mv,vmars,dmars,mmars,vj,dj,mj,vsat,dsat,msat
 
@@ -403,11 +403,11 @@ def moonrise(date,lat):
     latitude = ephem.degrees('%s:00:00.0' %lat)
     obs.lat = latitude
     obs.pressure = 0
-    m = ephem.Moon(obs)
     obs.horizon = '-0:34'
 
     d = ephem.date(date - 30 * ephem.second)
     obs.date = d
+    m = ephem.Moon(obs)
     m.compute(d)
 
     # Moonrise/Moonset on 1st. day ...
@@ -562,8 +562,8 @@ def ariestransit(date):
     trans = ephem.hours(2*math.pi-sid/1.00273790935)
 #    obs.date = date + trans/(2*math.pi) #turns ephem.angle (time) into ephem date
     hhmm = str(trans)[0:5]	# can return "h:mm:"
-    if hhmm[1:2] == ":":	# check if single digit hours
-        hhmm = "0" + hhmm[0:4]
+    if hhmm[1:2] == ':':	# check if single digit hours
+        hhmm = '0' + hhmm[0:4]
     return hhmm
     
 def planetstransit(date):
@@ -579,13 +579,13 @@ def planetstransit(date):
     v.compute(date)
     vsha = nadeg(2*math.pi-ephem.degrees(v.g_ra).norm)
     vtrans = time(obs.next_transit(v))
-    hpvenus = "%0.1f" %((math.tan(6371/(v.earth_distance*149597870.7)))*60*180/math.pi)
+    hpvenus = u'%0.1f' %((math.tan(6371/(v.earth_distance*149597870.7)))*60*180/math.pi)
     
     obs.date = date
     mars.compute(date)
     marssha = nadeg(2*math.pi-ephem.degrees(mars.g_ra).norm)
     marstrans = time(obs.next_transit(mars))
-    hpmars = "%0.1f" %((math.tan(6371/(mars.earth_distance*149597870.7)))*60*180/math.pi)
+    hpmars = u'%0.1f' %((math.tan(6371/(mars.earth_distance*149597870.7)))*60*180/math.pi)
 
     obs.date = date
     j.compute(date)

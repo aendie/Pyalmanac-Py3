@@ -241,7 +241,7 @@ def NSdecl(deg, hr, printNS, printDEG, modernFMT):
         hemisph = u'S'
         deg = deg[1:]
     else:
-        hemisph = "N"
+        hemisph = u'N'
     if not(printDEG):
         deg = deg[3:]	# skip the degrees (always dd°mm.m)
         if (hr+3)%6 == 0:
@@ -299,11 +299,10 @@ def page(date):
     
 def pages(date, p):
     # make 'p' pages beginning with date
-    d = ephem.date(date)
     out = ''
     for i in range(p):
-        out = out + page(d)
-        d = d + 15
+        out = out + page(date)
+        date += 15
     return out
     
     

@@ -86,6 +86,7 @@ if s in set(['1', '2', '3', '4']):
         else:
             print("Error! Last year is not numeric")
             sys.exit(0)
+
     tsin = input("""What table  style is required?:\n
     t   Traditional
     m   Modern
