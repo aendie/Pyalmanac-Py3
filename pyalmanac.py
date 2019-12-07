@@ -118,7 +118,7 @@ if s in set(['1', '2', '3', '4']):
             stop = time.time()
             msg = "execution time = %0.2f seconds" %(stop-start)
             print(msg)
-            print
+            print()
             command = 'pdflatex %s' %filename
             os.system(command)
             print("finished creating nautical almanac for %s" %year)
