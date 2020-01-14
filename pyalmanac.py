@@ -63,7 +63,7 @@ if s in set(['1', '2', '3', '4']):
         else:
             print("Error! Invalid format")
             sys.exit(0)
-
+        
         if str(yearfr).isnumeric():
             if 1000 <= int(yearfr) <= 3000:
                 first_day = datetime.date(int(yearfr), 1, 1)
@@ -103,13 +103,13 @@ if s in set(['1', '2', '3', '4']):
     else:
         DecFmt = '[old]'
 
-
     if s == '1':
         print("Please wait - this can take a while.")
         for yearint in range(int(yearfr),int(yearto)+1):
             start = time.time()
             year = "%4d" %yearint
-            print("\nCreating the nautical almanac for the year %s" %year)
+            msg = "\nCreating the nautical almanac for the year %s" %year
+            print(msg)
             first_day = datetime.date(yearint, 1, 1)
             filename = "almanac%s%s.tex" %(ff,year+DecFmt)
             outfile = open(filename, mode="w", encoding="utf8")
@@ -129,7 +129,8 @@ if s in set(['1', '2', '3', '4']):
     elif s == '2':
         for yearint in range(int(yearfr),int(yearto)+1):
             year = "%4d" %yearint
-            print("\nCreating the sun tables only for the year %s" %year)
+            msg = "\nCreating the sun tables only for the year %s" %(year)
+            print(msg)
             first_day = datetime.date(yearint, 1, 1)
             filename = "sunalmanac%s%s.tex" %(ff,year+DecFmt)
             outfile = open(filename, mode="w", encoding="utf8")
@@ -144,13 +145,14 @@ if s in set(['1', '2', '3', '4']):
 
     elif s == '3':
 ##        config.init()		# initialize log file
-        print("\nCreating nautical almanac tables - from %s" %(sdmy))
+        msg = "\nCreating nautical almanac tables - from %s" %(sdmy)
+        print(msg)
         filename = "almanac%s%s.tex" %(ff,symd+DecFmt)
         outfile = open(filename, mode="w", encoding="utf8")
         outfile.write(tables.almanac(first_day,2))
         outfile.close()
-##        err = 'Count of incorrect values: %s' %config.errors
-##        config.writeLOG('\n' + err + '\n')
+##        msg = 'Count of incorrect values: %s' %config.errors
+##        config.writeLOG('\n' + msg + '\n')
 ##        config.closeLOG()
         command = 'pdflatex %s' %filename
         os.system(command)
@@ -160,7 +162,8 @@ if s in set(['1', '2', '3', '4']):
         os.remove("almanac%s%s.aux" %(ff,symd+DecFmt))
 
     elif s == '4':
-        print("\nCreating the sun tables only - from %s" %(sdmy))
+        msg = "\nCreating the sun tables only - from %s" %(sdmy)
+        print(msg)
         filename = "sunalmanac%s%s.tex" %(ff,symd+DecFmt)
         outfile = open(filename, mode="w", encoding="utf8")
         outfile.write(suntables.almanac(first_day,2))

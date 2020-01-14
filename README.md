@@ -51,6 +51,10 @@ Declination formatting has been changed to the standard used in Nautical Almanac
 
 This also includes some very minor changes and an improved title page for the full almanac with a star chart that indicates the northern navigational stars.
 
+**UPDATE: Jan 2020**
+
+The Nautical Almanac tables now indicate if the sun never sets or never rises; similarly if the moon never sets or never rises. The constant "search_next_rising_sun" in **config.py** determines how the *SunNeverSets* or *SunNeverRises* state is calculated. The code also has cosmetic improvements.
+
 ## Requirements
 
 &nbsp;&nbsp;&nbsp;&nbsp;Most of the computation is done by the free Pyephem library.  
