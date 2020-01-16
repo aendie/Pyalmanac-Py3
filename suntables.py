@@ -62,9 +62,9 @@ def suntab(date):
                 sdec = NSdecl(eph[1],h,printNS,printDEG,False)
 
                 line = "%s & %s & %s" %(h,eph[0],sdec)
-                lineterminator = u'\\\ \n'
+                lineterminator = u"\\\ \n"
                 if h < 23 and (h+1)%6 == 0:
-                    lineterminator = u'\\\[2Pt] \n'
+                    lineterminator = u"\\\[2Pt] \n"
                 tab = tab + line + lineterminator
                 h += 1
                 da = da + ephem.hour
@@ -73,9 +73,9 @@ def suntab(date):
             while h < 24:
                 eph = sunmoon(da)
                 line = "%s & %s & %s" %(h,eph[0],eph[1])
-                lineterminator = u'\\\ \n'
+                lineterminator = u"\\\ \n"
                 if h < 23 and (h+1)%6 == 0:
-                    lineterminator = u'\\\[2Pt] \n'
+                    lineterminator = u"\\\[2Pt] \n"
                 tab = tab + line + lineterminator
                 h += 1
                 da = da + ephem.hour
@@ -145,9 +145,9 @@ def suntabm(date):
                 if group == 1:
                     tab = tab + r'''\rowcolor{LightCyan}
 '''
-                lineterminator = u'\\\ \n'
+                lineterminator = u"\\\ \n"
                 if h < 23 and (h+1)%6 == 0:
-                    lineterminator = u'\\\[2Pt] \n'
+                    lineterminator = u"\\\[2Pt] \n"
                 tab = tab + line + lineterminator
                 h += 1
                 da = da + ephem.hour
@@ -440,5 +440,5 @@ def almanac(first_day, pagenum):
     first_day = r"""%s/%s/%s""" %(year,mth,day)
     date = ephem.Date(first_day)    # date to float
     alm = alm + pages(date,pagenum)
-    alm = alm + u'\end{document}'
+    alm = alm + u"\end{document}"
     return alm

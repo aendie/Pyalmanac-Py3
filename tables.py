@@ -71,9 +71,9 @@ def planetstab(date):
                 sdec = NSdecl(eph[8],h,printNS,printDEG,False)
 
                 line = "%s & %s & %s & %s & %s & %s & %s & %s & %s & %s" %(h,eph[0],eph[1],vdec,eph[3],mdec,eph[5],jdec,eph[7],sdec)
-                lineterminator = u'\\\ \n'
+                lineterminator = u"\\\ \n"
                 if h < 23 and (h+1)%6 == 0:
-                    lineterminator = u'\\\[2Pt] \n'
+                    lineterminator = u"\\\[2Pt] \n"
                 tab = tab + line + lineterminator
                 h += 1
                 da = da + ephem.hour
@@ -82,9 +82,9 @@ def planetstab(date):
             while h < 24:
                 eph = planetsGHA(da)
                 line = "%s & %s & %s & %s & %s & %s & %s & %s & %s & %s" %(h,eph[0],eph[1],eph[2],eph[3],eph[4],eph[5],eph[6],eph[7],eph[8])
-                lineterminator = u'\\\ \n'
+                lineterminator = u"\\\ \n"
                 if h < 23 and (h+1)%6 == 0:
-                    lineterminator = u'\\\[2Pt] \n'
+                    lineterminator = u"\\\[2Pt] \n"
                 tab = tab + line + lineterminator
                 h += 1
                 da = da + ephem.hour
@@ -307,9 +307,9 @@ def sunmoontab(date):
                 mlastNS = mNS
 
                 line = "%s & %s & %s & %s & %s & %s & %s & %s" %(h,eph[0],sdec,eph[2],eph[3],mdec,eph[5],eph[6])
-                lineterminator = u'\\\ \n'
+                lineterminator = u"\\\ \n"
                 if h < 23 and (h+1)%6 == 0:
-                    lineterminator = u'\\\[2Pt] \n'
+                    lineterminator = u"\\\[2Pt] \n"
                 tab = tab + line + lineterminator
                 h += 1
                 da = da + ephem.hour
@@ -320,7 +320,7 @@ def sunmoontab(date):
                 line = "%s & %s & %s & %s & %s & %s & %s & %s" %(h,eph[0],eph[1],eph[2],eph[3],eph[4],eph[5],eph[6])
                 lineterminator = u"\\\ \n"
                 if h < 23 and (h+1)%6 == 0:
-                    lineterminator = u'\\\[2Pt] \n'
+                    lineterminator = u"\\\[2Pt] \n"
                 tab = tab + line + lineterminator
                 h += 1
                 da = da + ephem.hour
@@ -519,12 +519,12 @@ def NSdeg(deg, modern=False, hr=0, forceNS=False):
         hemisph = u'N'
     if modern:
         if forceNS or hr%6 == 0:
-            sdeg = u'\\textcolor{blue}{%s}' %hemisph + deg
+            sdeg = u"\\textcolor{blue}{%s}" %hemisph + deg
         else:
             sdeg = deg
     else:
         if forceNS or hr%6 == 0:
-            sdeg = u'\\textbf{%s}' %hemisph + deg
+            sdeg = u"\\textbf{%s}" %hemisph + deg
         else:
             sdeg = deg
     return sdeg, hemisph
@@ -867,6 +867,6 @@ def almanac(first_day, pagenum):
     first_day = r"""%s/%s/%s""" %(year,mth,day)
     date = ephem.Date(first_day)    # date to float
     alm = alm + pages(date,pagenum)
-    alm = alm + u'\end{document}'
+    alm = alm + u"\end{document}"
     return alm
 

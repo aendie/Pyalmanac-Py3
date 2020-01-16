@@ -74,12 +74,12 @@ def nadeg(rad, fixedwidth=1):
         if di == 360:
             di = 0
     if fixedwidth == 2:
-        gm = u'%s%02i°%04.1f' %(theminus,di,mf)
+        gm = u"%s%02i°%04.1f" %(theminus,di,mf)
     else:
         if fixedwidth == 3:
-            gm = u'%s%03i°%04.1f' %(theminus,di,mf)
+            gm = u"%s%03i°%04.1f" %(theminus,di,mf)
         else:
-            gm = u'%s%s°%04.1f' %(theminus,di,mf)
+            gm = u"%s%s°%04.1f" %(theminus,di,mf)
     return gm
 
 def flag_msg(msg):
@@ -150,13 +150,13 @@ def sun_moon_SD(date):      # used in suntab(m), sunmoontab(m)
     ephem_sun.compute(date+ephem.hour)
     obs.date = date+ephem.hour
     deg = ephem.degrees(ephem_sun.g_dec-dec)
-    ds = u'%0.1f' %(deg*360*30/ephem.pi)
-    sds = u'%0.1f' %(ephem_sun.radius*360*30/ephem.pi)
+    ds = u"%0.1f" %(deg*360*30/ephem.pi)
+    sds = u"%0.1f" %(ephem_sun.radius*360*30/ephem.pi)
     
     #Moon
     # compute semi-diameter of moon (in minutes)
     ephem_moon.compute(date)
-    sdm = u'%0.1f' %(ephem_moon.radius*360*30/ephem.pi)
+    sdm = u"%0.1f" %(ephem_moon.radius*360*30/ephem.pi)
     
     return ds,sds,sdm
 
@@ -227,10 +227,10 @@ def vdm_planets(date):      # used in planetstab(m)
     obs.date = date+ephem.hour
     ghap = ephem.degrees(obs.sidereal_time()-ephem_venus.g_ra).norm
     deg = ephem.degrees(ghap-gha).norm-ephem.degrees('15:00:00')
-    vvenus = u'%0.1f' %(deg*360*30/ephem.pi)
+    vvenus = u"%0.1f" %(deg*360*30/ephem.pi)
     deg = ephem.degrees(ephem_venus.g_dec-dec)
-    dvenus = u'%0.1f' %(deg*360*30/ephem.pi)
-    mvenus = u'%0.1f' %(ephem_venus.mag)
+    dvenus = u"%0.1f" %(deg*360*30/ephem.pi)
+    mvenus = u"%0.1f" %(ephem_venus.mag)
     
     #Mars
     obs.date = date
@@ -241,10 +241,10 @@ def vdm_planets(date):      # used in planetstab(m)
     obs.date = date+ephem.hour
     ghap = ephem.degrees(obs.sidereal_time()-ephem_mars.g_ra).norm
     deg = ephem.degrees(ephem.degrees(ghap-gha).norm-ephem.degrees('15:00:00'))
-    vmars = u'%0.1f' %(deg*360*30/ephem.pi)
+    vmars = u"%0.1f" %(deg*360*30/ephem.pi)
     deg = ephem.degrees(ephem_mars.g_dec-dec)
-    dmars = u'%0.1f' %(deg*360*30/ephem.pi)
-    mmars = u'%0.1f' %(ephem_mars.mag)
+    dmars = u"%0.1f" %(deg*360*30/ephem.pi)
+    mmars = u"%0.1f" %(ephem_mars.mag)
     
     #Jupiter
     obs.date = date
@@ -255,10 +255,10 @@ def vdm_planets(date):      # used in planetstab(m)
     obs.date = date+ephem.hour
     ghap = ephem.degrees(obs.sidereal_time()-ephem_jupiter.g_ra).norm
     deg = ephem.degrees(ephem.degrees(ghap-gha).norm-ephem.degrees('15:00:00'))
-    vjup = u'%0.1f' %(deg*360*30/ephem.pi)
+    vjup = u"%0.1f" %(deg*360*30/ephem.pi)
     deg = ephem.degrees(ephem_jupiter.g_dec-dec)
-    djup = u'%0.1f' %(deg*360*30/ephem.pi)
-    mjup = u'%0.1f' %(ephem_jupiter.mag)
+    djup = u"%0.1f" %(deg*360*30/ephem.pi)
+    mjup = u"%0.1f" %(ephem_jupiter.mag)
     
     #Saturn
     obs.date = date
@@ -269,10 +269,10 @@ def vdm_planets(date):      # used in planetstab(m)
     obs.date = date+ephem.hour
     ghap = ephem.degrees(obs.sidereal_time()-ephem_saturn.g_ra).norm
     deg = ephem.degrees(ephem.degrees(ghap-gha).norm-ephem.degrees('15:00:00'))
-    vsat = u'%0.1f' %(deg*360*30/ephem.pi)
+    vsat = u"%0.1f" %(deg*360*30/ephem.pi)
     deg = ephem.degrees(ephem_saturn.g_dec-dec)
-    dsat = u'%0.1f' %(deg*360*30/ephem.pi)
-    msat = u'%0.1f' %(ephem_saturn.mag)
+    dsat = u"%0.1f" %(deg*360*30/ephem.pi)
+    msat = u"%0.1f" %(ephem_saturn.mag)
     
     return vvenus,dvenus,mvenus,vmars,dmars,mmars,vjup,djup,mjup,vsat,dsat,msat
 
@@ -302,13 +302,13 @@ def planetstransit(date):   # used in starstab
     ephem_venus.compute(date)
     vsha = nadeg(2*math.pi-ephem.degrees(ephem_venus.g_ra).norm)
     vtrans = time(obs.next_transit(ephem_venus))
-    hpvenus = u'%0.1f' %((math.tan(6371/(ephem_venus.earth_distance*149597870.7)))*60*180/math.pi)
+    hpvenus = u"%0.1f" %((math.tan(6371/(ephem_venus.earth_distance*149597870.7)))*60*180/math.pi)
     
     obs.date = date
     ephem_mars.compute(date)
     marssha = nadeg(2*math.pi-ephem.degrees(ephem_mars.g_ra).norm)
     marstrans = time(obs.next_transit(ephem_mars))
-    hpmars = u'%0.1f' %((math.tan(6371/(ephem_mars.earth_distance*149597870.7)))*60*180/math.pi)
+    hpmars = u"%0.1f" %((math.tan(6371/(ephem_mars.earth_distance*149597870.7)))*60*180/math.pi)
 
     obs.date = date
     ephem_jupiter.compute(date)
@@ -623,20 +623,22 @@ def moonrise_set(date, lat):    # used in twilighttab (section 2)
     except Exception:
         out[0] = '--:--'
         lastevent = 0
-    try:
-        nextr = obs.next_rising(m, start=firstrising)
-        if nextr-obs.date < 1:
-            out2[0] = time(nextr)		# note: overflow to 00:00 next day is correct here
-            lastevent = nextr
-    except UnboundLocalError:
-        pass
-    except ephem.NeverUpError:
-        pass
-    except ephem.AlwaysUpError:
-        pass
-    except Exception:
-        flag_msg("Oops! %s occured, line: %s" %(sys.exc_info()[1],sys.exc_info()[2].tb_lineno))
-        #sys.exc_clear()		# only in Python 2
+
+    if out[0] != '--:--':
+        try:
+            nextr = obs.next_rising(m, start=firstrising)
+            if nextr-obs.date < 1:
+                out2[0] = time(nextr)		# note: overflow to 00:00 next day is correct here
+                lastevent = nextr
+        except UnboundLocalError:
+            pass
+        except ephem.NeverUpError:
+            pass
+        except ephem.AlwaysUpError:
+            pass
+        except Exception:
+            flag_msg("Oops! %s occured, line: %s" %(sys.exc_info()[1],sys.exc_info()[2].tb_lineno))
+            #sys.exc_clear()		# only in Python 2
 
     obs.date = d
     try:
@@ -649,21 +651,23 @@ def moonrise_set(date, lat):    # used in twilighttab (section 2)
             moonvisible[i] = False
     except Exception:
         out[3] = '--:--'
-    try:
-        nexts = obs.next_setting(m, start=firstsetting)
-        if nexts-obs.date < 1:
-            out2[3] = time(nexts)		# note: overflow to 00:00 next day is correct here
-        if nexts > lastevent:
-            moonvisible[i] = False
-    except UnboundLocalError:
-        pass
-    except ephem.NeverUpError:
-        pass
-    except ephem.AlwaysUpError:
-        pass
-    except Exception:
-        flag_msg("Oops! %s occured, line: %s" %(sys.exc_info()[1],sys.exc_info()[2].tb_lineno))
-        #sys.exc_clear()		# only in Python 2
+
+    if out[3] != '--:--':
+        try:
+            nexts = obs.next_setting(m, start=firstsetting)
+            if nexts-obs.date < 1:
+                out2[3] = time(nexts)		# note: overflow to 00:00 next day is correct here
+            if nexts > lastevent:
+                moonvisible[i] = False
+        except UnboundLocalError:
+            pass
+        except ephem.NeverUpError:
+            pass
+        except ephem.AlwaysUpError:
+            pass
+        except Exception:
+            flag_msg("Oops! %s occured, line: %s" %(sys.exc_info()[1],sys.exc_info()[2].tb_lineno))
+            #sys.exc_clear()		# only in Python 2
 
     if out[0] == '--:--' and out[3] == '--:--':	# if neither moonrise nor moonset...
         if moonvisible[i] == None:
@@ -685,20 +689,22 @@ def moonrise_set(date, lat):    # used in twilighttab (section 2)
     except Exception:
         out[1] = '--:--'
         lastevent = 0
-    try:
-        nextr = obs.next_rising(m, start=firstrising)
-        if nextr-obs.date < 1:
-            out2[1] = time(nextr)		# note: overflow to 00:00 next day is correct here
-            lastevent = nextr
-    except UnboundLocalError:
-        pass
-    except ephem.NeverUpError:
-        pass
-    except ephem.AlwaysUpError:
-        pass
-    except Exception:
-        flag_msg("Oops! %s occured, line: %s" %(sys.exc_info()[1],sys.exc_info()[2].tb_lineno))
-        #sys.exc_clear()		# only in Python 2
+
+    if out[1] != '--:--':
+        try:
+            nextr = obs.next_rising(m, start=firstrising)
+            if nextr-obs.date < 1:
+                out2[1] = time(nextr)		# note: overflow to 00:00 next day is correct here
+                lastevent = nextr
+        except UnboundLocalError:
+            pass
+        except ephem.NeverUpError:
+            pass
+        except ephem.AlwaysUpError:
+            pass
+        except Exception:
+            flag_msg("Oops! %s occured, line: %s" %(sys.exc_info()[1],sys.exc_info()[2].tb_lineno))
+            #sys.exc_clear()		# only in Python 2
 
     obs.date = d
     try:
@@ -711,21 +717,23 @@ def moonrise_set(date, lat):    # used in twilighttab (section 2)
             moonvisible[i] = False
     except Exception:
         out[4] = '--:--'
-    try:
-        nexts = obs.next_setting(m, start=firstsetting)
-        if nexts-obs.date < 1:
-            out2[4] = time(nexts)		# note: overflow to 00:00 next day is correct here
-        if nexts > lastevent:
-            moonvisible[i] = False
-    except UnboundLocalError:
-        pass
-    except ephem.NeverUpError:
-        pass
-    except ephem.AlwaysUpError:
-        pass
-    except Exception:
-        flag_msg("Oops! %s occured, line: %s" %(sys.exc_info()[1],sys.exc_info()[2].tb_lineno))
-        #sys.exc_clear()		# only in Python 2
+
+    if out[4] != '--:--':
+        try:
+            nexts = obs.next_setting(m, start=firstsetting)
+            if nexts-obs.date < 1:
+                out2[4] = time(nexts)		# note: overflow to 00:00 next day is correct here
+            if nexts > lastevent:
+                moonvisible[i] = False
+        except UnboundLocalError:
+            pass
+        except ephem.NeverUpError:
+            pass
+        except ephem.AlwaysUpError:
+            pass
+        except Exception:
+            flag_msg("Oops! %s occured, line: %s" %(sys.exc_info()[1],sys.exc_info()[2].tb_lineno))
+            #sys.exc_clear()		# only in Python 2
 
     if out[1] == '--:--' and out[4] == '--:--':	# if neither moonrise nor moonset...
         if moonvisible[i] == None:
@@ -747,20 +755,22 @@ def moonrise_set(date, lat):    # used in twilighttab (section 2)
     except Exception:
         out[2] = '--:--'
         lastevent = 0
-    try:
-        nextr = obs.next_rising(m, start=firstrising)
-        if nextr-obs.date < 1:
-            out2[2] = time(nextr)		# note: overflow to 00:00 next day is correct here
-            lastevent = nextr
-    except UnboundLocalError:
-        pass
-    except ephem.NeverUpError:
-        pass
-    except ephem.AlwaysUpError:
-        pass
-    except Exception:
-        flag_msg("Oops! %s occured, line: %s" %(sys.exc_info()[1],sys.exc_info()[2].tb_lineno))
-        #sys.exc_clear()		# only in Python 2
+
+    if out[2] != '--:--':
+        try:
+            nextr = obs.next_rising(m, start=firstrising)
+            if nextr-obs.date < 1:
+                out2[2] = time(nextr)		# note: overflow to 00:00 next day is correct here
+                lastevent = nextr
+        except UnboundLocalError:
+            pass
+        except ephem.NeverUpError:
+            pass
+        except ephem.AlwaysUpError:
+            pass
+        except Exception:
+            flag_msg("Oops! %s occured, line: %s" %(sys.exc_info()[1],sys.exc_info()[2].tb_lineno))
+            #sys.exc_clear()		# only in Python 2
 
     obs.date = d
     try:
@@ -773,21 +783,23 @@ def moonrise_set(date, lat):    # used in twilighttab (section 2)
             moonvisible[i] = False
     except Exception:
         out[5] = '--:--'
-    try:
-        nexts = obs.next_setting(m, start=firstsetting)
-        if nexts-obs.date < 1:
-            out2[5] = time(nexts)		# note: overflow to 00:00 next day is correct here
-        if nexts > lastevent:
-            moonvisible[i] = False
-    except UnboundLocalError:
-        pass
-    except ephem.NeverUpError:
-        pass
-    except ephem.AlwaysUpError:
-        pass
-    except Exception:
-        flag_msg("Oops! %s occured, line: %s" %(sys.exc_info()[1],sys.exc_info()[2].tb_lineno))
-        #sys.exc_clear()		# only in Python 2
+
+    if out[5] != '--:--':
+        try:
+            nexts = obs.next_setting(m, start=firstsetting)
+            if nexts-obs.date < 1:
+                out2[5] = time(nexts)		# note: overflow to 00:00 next day is correct here
+            if nexts > lastevent:
+                moonvisible[i] = False
+        except UnboundLocalError:
+            pass
+        except ephem.NeverUpError:
+            pass
+        except ephem.AlwaysUpError:
+            pass
+        except Exception:
+            flag_msg("Oops! %s occured, line: %s" %(sys.exc_info()[1],sys.exc_info()[2].tb_lineno))
+            #sys.exc_clear()		# only in Python 2
 
     if out[2] == '--:--' and out[5] == '--:--':	# if neither moonrise nor moonset...
         if moonvisible[i] == None:
