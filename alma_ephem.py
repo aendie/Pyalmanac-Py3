@@ -531,7 +531,7 @@ def getsunstate(d, lat, h):
         #sunvisible[i][h] = True
     except Exception:
         flag_msg("Oops! sun nextR %s: %s occured, line: %s" %(i,sys.exc_info()[1],sys.exc_info()[2].tb_lineno))
-        sys.exc_clear()		# only in Python 2
+        #sys.exc_clear()		# only in Python 2
 
     obs.date = d
     if not(err):	# note - 'nextrising' above *should* fail
@@ -549,7 +549,7 @@ def getsunstate(d, lat, h):
             #sunvisible[i][h] = True
         except Exception:
             flag_msg("Oops! sun nextS %s: %s occured, line: %s" %(i,sys.exc_info()[1],sys.exc_info()[2].tb_lineno))
-            sys.exc_clear()		# only in Python 2
+            #sys.exc_clear()		# only in Python 2
 
     if not(err):	# note - "err == True" *is* expected...
         # however if we found both, which occured first?
@@ -872,14 +872,14 @@ def moonstate(ndx):
     # return the current moonstate (if known)
     out = '--:--'
     if moonvisible[ndx] == True:
-        #out = 'UP'
+        #out = u'UP'
         #out = r'\framebox(12,4){}'
         #out = r'{\setlength{\fboxrule}{0.8pt}\setlength{\fboxsep}{0pt}\fbox{\makebox(12,4){}}}'
         #out = r'{\setlength{\fboxrule}{0.8pt}\fbox{\parbox[c][0pt]{0pt}{ }}}'
         #out = r'\includegraphics[scale=1.0]{./moonup.jpg}'
         out = r'\begin{tikzpicture}\draw (0,0) rectangle (12pt,4pt);\end{tikzpicture}'
     if moonvisible[ndx] == False:
-        #out = 'DOWN'
+        #out = u'DOWN'
         out = r'\rule{12Pt}{4Pt}'
     return out
 
