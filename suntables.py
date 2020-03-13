@@ -363,7 +363,7 @@ def almanac(first_day, pagenum):
     alm = r'''\documentclass[10pt, {}]{{report}}'''.format(paper)
 
     alm = alm + r'''
-%%\usepackage[utf8]{inputenc}
+%\usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{fontenc}'''
 
