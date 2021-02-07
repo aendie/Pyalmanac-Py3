@@ -8,10 +8,10 @@ some restrictions regarding the accuracy of sunset/twilight/sunrise and moonrise
 are the new norm as these are based on the more accurate algorithms currently employed
 in the NASA JPL HORIZONS System (the same algorithms are implemented in Skyfield).
 
-Pyalmanac is implemented using PyEphem, which in turn uses XEphem that is based on the
+Pyalmanac is implemented using Ephem (originally named PyEphem), which in turn uses XEphem that is based on the
 VSOP87D algorithms. XEphem is also 'end of life' as no further updates are planned,
 however the major discrepancies are related to the projected speed of Earth's rotation.
-The discrepancies in GHA between PyEphem and Skyfield 1.31 can be summarized thus:
+The discrepancies in GHA between Ephem and Skyfield 1.31 can be summarized thus:
 
 * in 2020:&nbsp;&nbsp; 00.0 to 00.1 arcMINUTES GHA too high
 * in 2030:&nbsp;&nbsp; 04.0 to 04.8 arcMINUTES GHA too high
@@ -19,17 +19,17 @@ The discrepancies in GHA between PyEphem and Skyfield 1.31 can be summarized thu
 * in 2100:&nbsp;&nbsp; 38.0 to 40.2 arcMINUTES GHA too high
 * in 2200:&nbsp;&nbsp; 90.1 to 94.1 arcMINUTES GHA too high
 
-The GHA discrepancy applies to the sun, moon, the First Point of Aries and all planets.
+The GHA discrepancy applies to the sun, moon, the First Point of Aries and to all planets.
 
 **Description**
 
 Pyalmanac is a Python 3 script that creates the daily pages of the Nautical Almanac. These are tables that are needed for celestial navigation with a sextant. Although you are strongly advised to purchase the official Nautical Almanac, this program will reproduce the tables with no warranty or guarantee of accuracy.
 
-Pyalmanac-Py3 was developed based on the original Pyalmanac by Enno Rodegerdts. Various improvements, enhancements and bugfixes (listed below) are implemented. Pyalmanac contains its own star database (similar to the database in PyEphem 3.7.6), however the accuracy was poor. It is updated with data from the Hipparcos Catalogue and the GHA/Dec data now matches a sample page from a Nautical Almanac exactly or at the most is within 0°0.1', which is very good.
+Pyalmanac-Py3 was developed based on the original Pyalmanac by Enno Rodegerdts. Various improvements, enhancements and bugfixes (listed below) are implemented. Pyalmanac contains its own star database (similar to the database in Ephem 3.7.6), however the accuracy was poor. It is updated with data from the Hipparcos Star Catalogue and the GHA/Dec star data now matches a sample page from a Nautical Almanac exactly or at the most is within 0°0.1', which is very good.
 
 NOTE: two scripts are included (both can be run): 'pyalmanac.py' and 'increments.py'  
-NOTE: Pyalmanac contains its own star database - it does not use the version supplied with PyEphem, hence updating from 3.7.6 to 3.7.7 is harmless. Star names are chosen to comply with Nautical Almanacs.  
-NOTE: a Python 2.7 script with identical functionality can be found at: https://github.com/aendie/Pyalmanac-Py2  
+NOTE: Pyalmanac contains its own star database - it does not use the version supplied with Ephem, hence updating from 3.7.6 to 3.7.7.1 is harmless. Star names are chosen to comply with Nautical Almanacs.  
+NOTE: if still required, a Python 2.7 script with identical functionality can be found at: https://github.com/aendie/Pyalmanac-Py2  
 NOTE: a [Skyfield](https://rhodesmill.org/skyfield/) version of Pyalmanac is available here: https://github.com/aendie/SFalmanac-Py3
 
 This fork of the original code, which can be found at https://github.com/rodegerdts/Pyalmanac, in general includes:
@@ -66,7 +66,7 @@ and the results have been crosschecked with USNO data to some extent.
 
 **UPDATE: Aug 2019**
 
-This includes a minor bugfix, improved and standardised output formatting, and cosmetic enhancements to the code. The idea is to have the same output formatting for both the PyEphem-based and Skyfield-based versions. If both are opened in a PDF reader, then simply by switching between tabs will highlight the data that has changed. Also one can now generate multiple years of almanacs with a single run. And output messages can be sent to the console or written to a log file if the log file has been opened.
+This includes a minor bugfix, improved and standardised output formatting, and cosmetic enhancements to the code. The idea is to have the same output formatting for both the Ephem-based and Skyfield-based versions. If both are opened in a PDF reader, then simply by switching between tabs will highlight the data that has changed. Also one can now generate multiple years of almanacs with a single run. And output messages can be sent to the console or written to a log file if the log file has been opened.
 
 **UPDATE: Nov 2019**
 
@@ -94,7 +94,7 @@ The Equation Of Time is shaded whenever EoT is negative indicating that apparent
 
 ## Requirements
 
-&nbsp;&nbsp;&nbsp;&nbsp;Most of the computation is done by the free Pyephem library.  
+&nbsp;&nbsp;&nbsp;&nbsp;Most of the computation is done by the free Ephem library.  
 &nbsp;&nbsp;&nbsp;&nbsp;Typesetting is done by MiKTeX or TeX Live so you first need to install:
 
 * Python v3.4 or higher (the latest version is recommended)
