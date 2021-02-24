@@ -27,7 +27,7 @@ Pyalmanac is a Python 3 script that creates the daily pages of the Nautical Alma
 
 Pyalmanac-Py3 was developed based on the original Pyalmanac by Enno Rodegerdts. Various improvements, enhancements and bugfixes (listed below) are implemented. Pyalmanac contains its own star database (similar to the database in Ephem 3.7.6), however the accuracy was poor. It is updated with data from the Hipparcos Star Catalogue and the GHA/Dec star data now matches a sample page from a Nautical Almanac exactly or at the most is within 0°0.1', which is very good.
 
-**NOTE: the Python Package Index (PyPI) edition is here: https://pypi.org/project/pyalmanac/ **  
+**NOTE: the Python Package Index (PyPI) edition is here:** https://pypi.org/project/pyalmanac/  
 **Users are encouraged to install the PyPI edition instead.**  
 NOTE: Pyalmanac contains its own star database - it does not use the version supplied with Ephem, hence updating from 3.7.6 to 3.7.7.1 is harmless. Star names are chosen to comply with Nautical Almanacs.  
 NOTE: if still required, a Python 2.7 script with identical functionality can be found at: https://github.com/aendie/Pyalmanac-Py2  
