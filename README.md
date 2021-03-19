@@ -11,7 +11,7 @@ in the NASA JPL HORIZONS System (the same algorithms are implemented in Skyfield
 Pyalmanac is implemented using Ephem (originally named PyEphem), which in turn uses XEphem that is based on the
 VSOP87D algorithms. XEphem is also 'end of life' as no further updates are planned,
 however the major discrepancies are related to the projected speed of Earth's rotation.
-The discrepancies in GHA between Ephem and Skyfield 1.31 can be summarized thus:
+The discrepancies in GHA between Ephem and Skyfield 1.31 (both UTC-time based) can be summarized thus:
 
 * in 2020:&nbsp;&nbsp; 00.0 to 00.1 arcMINUTES GHA too high
 * in 2030:&nbsp;&nbsp; 04.0 to 04.8 arcMINUTES GHA too high
@@ -23,7 +23,9 @@ The GHA discrepancy applies to the sun, moon, the First Point of Aries and to al
 
 **Description**
 
-Pyalmanac is a Python 3 script that creates the daily pages of the Nautical Almanac. These are tables that are needed for celestial navigation with a sextant. Although you are strongly advised to purchase the official Nautical Almanac, this program will reproduce the tables with no warranty or guarantee of accuracy.
+Pyalmanac is a Python 3 script that creates the daily pages of the Nautical Almanac **using the UTC timescale**, which is ***not optimal for navigation purposes.*** :frowning_face: Official Nautical Almanacs employ a UT timescale (equivalent to UT1).
+(UTC is the basis for the worldwide system of civil time.)
+These are tables that are needed for celestial navigation with a sextant. Although you are strongly advised to purchase the official Nautical Almanac, this program will reproduce the tables with no warranty or guarantee of accuracy.
 
 Pyalmanac-Py3 was developed based on the original Pyalmanac by Enno Rodegerdts. Various improvements, enhancements and bugfixes (listed below) are implemented. Pyalmanac contains its own star database (similar to the database in Ephem 3.7.6), however the accuracy was poor. It is updated with data from the Hipparcos Star Catalogue and the GHA/Dec star data now matches a sample page from a Nautical Almanac exactly or at the most is within 0°0.1', which is very good.
 
