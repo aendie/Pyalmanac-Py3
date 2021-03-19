@@ -23,7 +23,7 @@ The GHA discrepancy applies to the sun, moon, the First Point of Aries and to al
 
 **Description**
 
-Pyalmanac is a Python 3 script that creates the daily pages of the Nautical Almanac **using the UTC timescale**, which is ***not optimal for navigation purposes.*** :frowning_face: Official Nautical Almanacs employ a UT timescale (equivalent to UT1).
+Pyalmanac is a Python 3 script that creates the daily pages of the Nautical Almanac **using the UTC timescale**, which is ***not optimal for navigation purposes*** :frowning_face:. Official Nautical Almanacs employ a UT timescale (equivalent to UT1).
 (UTC is the basis for the worldwide system of civil time.)
 These are tables that are needed for celestial navigation with a sextant. Although you are strongly advised to purchase the official Nautical Almanac, this program will reproduce the tables with no warranty or guarantee of accuracy.
 
