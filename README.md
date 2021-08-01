@@ -119,7 +119,7 @@ The DockerHub image contains a Linux-based OS, TeX Live, the application code, a
 
 The PDF filenames have been revised:
 
-* modna_\<starting date or year\>.pdf: for Nautical Almanacs in modern style
+* modna_\<starting date or year>.pdf: for Nautical Almanacs in modern style
 * modst_\<starting date or year\>.pdf: for Sun Tables in modern style
 * tradna_\<starting date or year\>.pdf: for Nautical Almanacs in traditional style
 * tradst_\<starting date or year\>.pdf: for Sun Tables in traditional style
