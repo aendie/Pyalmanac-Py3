@@ -13,24 +13,26 @@ Pyalmanac was developed based on the original *Pyalmanac* by Enno Rodegerdts. Va
 **Current state of Pyalmanac**
 
 Pyalmanac is a somewhat dated program.
-Pyalmanac is implemented using the [Ephem](https://rhodesmill.org/pyephem/) astronomical library (originally named PyEphem), which is in 'maintenance mode', however recent improvements have made it acceptable for navigational purposes again.
-Ephem relies on XEphem, which was 'end of life' as no further updates to XEphem were planned.
+Pyalmanac is implemented using the [Ephem](https://rhodesmill.org/pyephem/) astronomical library (originally named PyEphem), which has *Mature* development status.
+Ephem was based upon XEphem, which is 'end of life' as no further updates to XEphem are planned.
 Elwood Charles Downey, the author of XEphem, generously gave permission for their use in (Py)Ephem.
 **Please note the Software Requirements below for Ephem as the latest versions still contain a software error!**
 
 Pyalmanac contains its own star database, now updated with data from the Hipparcos Star Catalogue. 
+Star names are chosen to comply with official Nautical Almanacs.
 The GHA/Dec star data now matches a sample page from a Nautical Almanac typically to within 0°0.1'.
 As of now, (Py)Ephem will continue to receive critical bugfixes and be ported to each new version of Python.
 Pyalmanac still has the advantage of speed over other implementations.
 
-One minor limitation of Ephem is related to the projected speed of Earth's rotation, or "sidereal time", which is more accurate in Skyfield-based almanacs.
-Accurate assessment of "sidereal time" minimizes GHA discrepancies in general. (This applies to all celestial objects.)
+One minor limitation of Ephem is in the EOP (Earth Orientation Parameters) (affecting *sidereal time*) which is more accurate in Skyfield-based almanacs as they can employ the IERS (International Earth Rotation Service) EOP published data. This affects *sidereal time*, which minimizes GHA discrepancies in general. (This applies to all celestial objects.)
 
-Given the choice, [SFalmanac](https://pypi.org/project/sfalmanac/) is an up-to-date program with almost identical functionality to Pyalmanac, and it uses [Skyfield](https://rhodesmill.org/skyfield/), a modern astronomical library based on the highly accurate algorithms employed in the [NASA JPL HORIZONS System](https://ssd.jpl.nasa.gov/horizons/).
+Slight differences can also be detected in the *Event Times*: sunrise, sunset, moonrise, moonset, civil twilight start/end and nautical twilight start/end, particularly in more Northern latitudes. 
+
+Given the choice, [SFalmanac](https://pypi.org/project/sfalmanac/) is an up-to-date program with more enhanced functionality compared to Pyalmanac, and it uses [Skyfield](https://rhodesmill.org/skyfield/), a modern astronomical library based on the highly accurate algorithms employed in the [NASA JPL HORIZONS System](https://ssd.jpl.nasa.gov/horizons/).
+(Pyalmanac and SFalmanac have same formatted pages so differences can easily be spotted by swiching between them in Adobe Acrobat reader.)
 
 **NOTE: the Python Package Index (PyPI) edition is here:** https://pypi.org/project/pyalmanac/  
 **Users are encouraged to install the PyPI edition instead.**  
-NOTE: Pyalmanac contains its own star database - it does not use the version supplied with Ephem. Star names are chosen to comply with official Nautical Almanacs.  
 
 This fork of the original code, which can be found at https://github.com/rodegerdts/Pyalmanac, in general includes:
 
@@ -145,6 +147,20 @@ The PDF filenames have been revised (again):
 * NAtrad_\<starting date or month or year\>.pdf: for Nautical Almanacs in traditional style
 * STtrad_\<starting date or month or year\>.pdf: for Sun Tables in traditional style
 
+**UPDATE: Sep 2022**
+
+* The PDF filenames have been harmonized with those in SFalmanac.
+* Better support for Letter-sized pages.
+* The LaTeX *fancyhdr* package is employed when MiKTeX (or a TeX Live version >= 2020) is detected.
+* Command line options:
+    * -v   ... 'verbose': to send pdfTeX output to the terminal
+    * -log ... to keep the log file
+    * -tex ... to keep the tex file
+    * -old ... old formatting without the fancyhdr package
+    * -a4  ... A4 papersize
+    * -let ... Letter papersize
+    * -dpo ... data pages only
+
 ## Requirements
 
 &emsp;Astronomical computation is done by the free Ephem library.  
@@ -163,9 +179,9 @@ The PDF filenames have been revised (again):
 
 ### INSTALLATION GUIDELINES on Windows 10:
 
-&emsp;Install Python 3.10.6 (should be in the system environment variable PATH, e.g. )  
+&emsp;Install Python 3.10.6 It should be in the system environment variable PATH, e.g.  
 &emsp;&ensp;**C:\\Python310\Scripts;C:\\Python310;** .....  
-&emsp;Install MiKTeX 21.1 from https://miktex.org/  
+&emsp;Install MiKTeX 22.7 from https://miktex.org/  
 &emsp;When MiKTeX first runs it will require installation of additional packages.  
 &emsp;Run Command Prompt as Administrator, go to your Python folder and execute, e.g.:
 
@@ -173,14 +189,12 @@ The PDF filenames have been revised (again):
 &emsp;**python.exe -m pip install --upgrade pip**  
 &emsp;... for a first install:  
 &emsp;**pip3 uninstall pyephem ephem**  
-&emsp;**pip3 install ephem**  
-&emsp;... if already installed, check for upgrade explicitly:  
-&emsp;**pip3 install --upgrade ephem**  
+&emsp;**pip3 install ephem==4.1**  
 
 &emsp;Put the Pyalmanac files in a new folder, run Command Prompt and start with:  
 &emsp;**py -3 pyalmanac.py**
 
-&emsp;If using MiKTeX 21 or higher, executing 'option 5' (Increments and Corrections) will probably fail with  
+&emsp;If using MiKTeX 21 or higher, executing 'option 7' (Increments and Corrections) will probably fail with  
 &emsp;**! TeX capacity exceeded, sorry [main memory size=3000000].**  
 &emsp;To resolve this problem (assuming MiKTeX has been installed for all users),  
 &emsp;open a Command Prompt as Administrator and enter:  
@@ -200,7 +214,7 @@ The PDF filenames have been revised (again):
 
 &emsp;Install the required astronomical library:  
 &emsp;**pip3 uninstall pyephem ephem**  
-&emsp;**pip3 install ephem**
+&emsp;**pip3 install ephem==4.1**
 
 &emsp;Put the Pyalmanac files in a folder and start with:  
 &emsp;**python3 pyalmanac.py**  
@@ -215,7 +229,7 @@ The PDF filenames have been revised (again):
 
 &emsp;**sudo easy_install pip**  
 &emsp;**pip uninstall pyephem ephem**  
-&emsp;**pip install ephem**  
+&emsp;**pip install ephem==4.1**  
 
 &emsp;If this command fails, your Mac asks you if you would like to install the header files.  
 &emsp;Do so - you do not need to install the full IDE - and try again.
