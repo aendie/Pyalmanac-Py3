@@ -15,7 +15,7 @@ Pyalmanac was developed based on the original *Pyalmanac* by Enno Rodegerdts. Va
 Pyalmanac is a somewhat dated program.
 Pyalmanac is implemented using the [Ephem](https://rhodesmill.org/pyephem/) astronomical library (originally named PyEphem), which has *Mature* development status.
 Ephem was based upon XEphem, which is 'end of life' as no further updates to XEphem are planned.
-Elwood Charles Downey, the author of XEphem, generously gave permission for their use in (Py)Ephem.
+Elwood Charles Downey, the author of XEphem, generously gave permission for their use in (Py)Ephem.  
 **Please note the Software Requirements below for Ephem as the latest versions still contain a software error!**
 
 Pyalmanac contains its own star database, now updated with data from the Hipparcos Star Catalogue. 
